@@ -1,0 +1,24 @@
+# Format:
+# idBoT ownerId nDep arrival duration ntasks %CPU memory [id_dependences...] # Comments
+#
+# Attention:
+# - A line to be ignored MUST start with '#' (like this line)
+# - A line starting with any other character, including ' ' (space), will be
+#   interpreted as a BoT descritor and must to follow the format specified above
+# - After specify a BoT, comments can be inserted after the '#' character
+# - It is not necessarly order by idBot the BoTs BUT if the file describes
+#   N BoTs, all BoTs 0 to N-1 must be present
+# - If nDep == 0, the arrival time corresponds to the launching time (in steps)
+# - If nDep != 0, the arrival time colluns must be filled with an integer value
+#                 but this value is skipped
+# - In this BoT, all arrival times are informed as 0, but only BoTs 0 and 7 are
+#   ready do execute once the execution starts
+0  0 0 0 10 4 80 50       # Blast ...
+1  0 1 0 10 1 80 50 0     # SRNA
+2  0 1 0 10 1 80 50 1     # FFN_parse
+3  0 1 0 10 3 80 50 1     # Blast_candidate ...
+4  0 1 0 10 1 80 50 2     # Blast_syntese
+5  0 3 0 10 1 80 50 4 3 8 # SRNA_annotation
+6  0 1 0 10 1 80 50 5     # Sendemail
+7  0 0 0 10 19 50 60      # Patser
+8  0 1 0 10 1 80 50 7     # Patser_con 

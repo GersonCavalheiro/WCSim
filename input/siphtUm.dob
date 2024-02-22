@@ -1,0 +1,11 @@
+#Format:                 
+#idBoT ownerId nDep arrival ntasks nbInstrucoes memory [id_dependences...] # Comments      
+0  0 0 0 4 216000 50          # Blast ...
+1  0 1 0 1 432000 50 0        # SRNA  
+2  0 1 0 1 432000 50 1        # FFN_parse  
+3  0 1 0 3 216000 50 1        # Blast_candidate ... 
+4  0 1 0 1 432000 50 2        # Blast_syntese  
+5  0 3 0 1 216000 50 4 3 8    # SRNA_annotation    
+6  0 1 0 1 432000 50 5        # Sendemail  
+7  0 0 0 19 108000 60         # Patser  
+8  0 1 0 1 432000 50 7        # Patser_con  

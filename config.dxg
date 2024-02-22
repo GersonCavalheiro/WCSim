@@ -1,0 +1,2 @@
+INPUT = baremetal.h bot.cpp botguardado.h bot.h cloud.cpp cloud.h Cluster.h event.cpp event.h globalclock.cpp globalclock.h globaldata.h Grid.h main.cpp node.cpp node.h Processador.h simulator.cpp simulator.h task.cpp task.h Task.h user.cpp user.h utils.cpp utils.h virtualmachine.cpp virtualmachine.h
+SHORT_NAMES = YES

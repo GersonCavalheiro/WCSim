@@ -1,0 +1,89 @@
+This file describes the following file formats:
+
+- DAG of BoT File (extension .dob)
+- PASSWD file (extension .pwd)
+- INFRASTRUCTURE file (extension .infra)
+
+DAG OF BOT FILE (extension .dob)
+---------------
+- Each line describes a BoT
+- Everything after a '#' is discarted
+- A BoT description is given by 8 attributes
+- The 8 attributes maybe followed by nDep dependencies
+  to be satisfied before launch the respective BoT
+- The BoT attributes are (separated by spaces)
+-- idBoT
+-- ownerId
+-- nDep
+-- arrival
+-- nTasks
+-- nbInstructions
+-- memory
+-- [id_dependences...]
+- All attributes are signed interger numbers
+- All attributes must be positive
+- It is not necessarly to inform the idBoT sequentially
+-- idBoT: a symbol used to represent a BoT in this file
+   helping the simulator to build an internal DAG representation
+-- ownerId: the unique user identifier (see PASSWD FILE)
+-- userLogin: login date
+-- nDep: if the execution of the BoT depends on the end
+   of others, nDep corresponds to the number of dependences
+-- arrival: time (given in seconds) representing the BoT
+   arrival date. Notice: if nDep != 0, this attribute
+   is discarded
+- nTasks: number of tasks in the BoT
+- nbInstructions: size (MI - million of instructions) of each
+  task in the BoT: 1 MI represents the smallest task size
+- memory: memory requirement (in GB)
+-- id_dependences: if nDep > 0, a list of nDep idBoT informs
+   the BoT that must be finished before launch the BoT
+- Notice: if the number of id_dependences != nDep, the
+  simulator fail reading the file (unpredicable results
+  at execution time)
+   
+
+PASSWD FILE - CLOUD USERS LOGIN (extension .pwd)
+-----------
+- Each line describes a user. The contends are: (separated by spaces)
+-- name (string): the name of the user (without spaces)
+-- node (integer): node hosting the user. If the corresponding node
+   is not present in the simulated cloud, all submissions of this
+   user will be discarded
+-- loginDate (integer): date when the user will be logged in
+-- nbVMs (integer): number of VMs owned
+-- vmFamily (integer): VM family code class. All VMs belong to the
+   same family
+- Notice:
+-- If name appears twice in this file, the file reading fails
+-- Only code 0 is available to vmFamily
+- During the execution:
+-- New VMs can be added to the user. The new VMs must to belong to
+   the same family
+-- The user can return VMs. When the number of VMs is 0 (zero), the
+   user is considered logged out and, and new submissions from this
+   user will be discarded
+
+CLOUD FILE - DESCRIBES THE NODES IN THE CLOUD
+----------
+- Each line describes a node in the cloud. The contendas are (separeted
+  by spaces)
+-- name (string): the name of the node (without spaces)
+-- riseDate (integer): date when the node will be aggreagated to the
+   cloud
+-- bareMetalFamily (integer): bare metal family class code
+- Notice
+-- It is not necessarly to put ids in order, but if the a give name
+   appears twice in this file, the simulator fail reading the file
+   (unpredicable results at execution time)
+-- Only code 0 is available for bareMetalFamily
+
+NETWORK FILE - LINK SPEEDS AMONG NODES
+------------
+- The cloud has (0..n-1) nodes
+- A line i (0 <= i < n-1) provides the speed of the link among node i
+  and all nodes j, i < j < n-1
+- The speed is considered for both directions
+- Zero corresponds to a infinite bandwitch (zero delay in communications)
+- If non informated, the speed among a pair of nodes is assumed 0
+

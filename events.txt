@@ -1,0 +1,22 @@
+BoTReadyEv:
+- Um BoT encontra-se pronto para executar
+-- bot->launch()
+---- bot.status = running
+---- bot.owner->schedule(bot->tasks) 
+BoTCompletedEv
+UserLoginEv
+NodeRisingEv
+NodeShutdownEv
+TaskFinishEv
+TaskReadyEv
+
+
+
+// all tasks in taskL are owned by this user
+User::schedule(vector<task*>& taskL )
+  for( t in taskL ) {
+    t->status = running;
+    vm = selectVM( owner, t );
+    vm.add:Wq
+ 
+  

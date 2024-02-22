@@ -1,0 +1,15 @@
+Cria um diretorio local com o mesmo nome do projeto no Git
+git clone git@github.com:GersonCavalheiro/Consolida.git
+--> isso faz com que o novo projeto (Consolida, no caso) seja copiado localmente
+Então copia para o diretório local os arquivos em questão
+git add .
+--> isso faz com que, localmente, as alterações sejam consideradas para o proximo commit
+git commit -m "Upload inicial"
+--> localmente monta um registro para fazer o tal commit, com uma mensagem simpática representando o que foi feito
+git push
+--> envia tudo para o git
+
+git pull
+--> busca do git
+
+no pull ou no push tem que estar dentro do diretorio
