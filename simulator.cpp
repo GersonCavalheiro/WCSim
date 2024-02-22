@@ -31,7 +31,6 @@ void Simulator::run() {
 
   while( !eventL.empty() || BoT::undoneBoTs() > 0 ) {
     if( !eventL.empty() ) {
-      cout << "A\n";
       Event* ev = eventL.front();
       if( ev->getDate() == GlobalClock::get() ) {
         eventL.pop_front();
